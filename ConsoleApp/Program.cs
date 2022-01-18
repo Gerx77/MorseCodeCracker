@@ -102,7 +102,7 @@ void SendSOS()
     mc = Translate("SOS");
 
     var result = PrintMorseCodeBasic(mc);
-    Console.Write($result);
+    Console.Write($"{result}\n");
 
     PrintMorseCode(mc);
 
