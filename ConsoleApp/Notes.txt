@@ -1,0 +1,17 @@
+﻿Implementation Notes:
+
+<input>
+Recieve text from the command line
+text file
+audio stream
+port via virtual audio cable
+
+<output>
+log MC recieved => log.txt
+sql db
+virtual audio cable
+play wav/mp3 file for dash and dots (timer for pause between??)
+
+Road map:
+API with endpoints to control everything
+Blazor front end
