@@ -112,7 +112,7 @@ void SendSOS()
 string PrintMorseCodeBasic(List<IBaseMC> mc)
 {
     if (mc.Count == 0)
-        return String.Empty;
+        return string.Empty;
 
     var result = new StringBuilder();
 
