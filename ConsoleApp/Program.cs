@@ -4,12 +4,37 @@ using ConsoleApp;
 using ConsoleApp.Models;
 using ConsoleApp.Services;
 using System.Text;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+using IHost host = Host.CreateDefaultBuilder(args).Build();
+
+// Ask the service provider for the configuration abstraction.
+IConfiguration config = host.Services.GetRequiredService<IConfiguration>();
+
+// Get values from the config given their key and their target type.
+int keyOneValue = config.GetValue<int>("KeyOne");
+bool keyTwoValue = config.GetValue<bool>("KeyTwo");
+string keyThreeNestedValue = config.GetValue<string>("KeyThree:Message");
+
+// Write the values to the console.
+Console.WriteLine($"KeyOne = {keyOneValue}");
+Console.WriteLine($"KeyTwo = {keyTwoValue}");
+Console.WriteLine($"KeyThree:Message = {keyThreeNestedValue}");
+
+// Application code which might rely on the config could start here.
+// TODO move a lot of this stuff below in to a new class => MorseCode (dont want a bunch of stuff here)
 
 var morseCodeMasterList = new List<IBaseMC>();
 Utils.SeedData(morseCodeMasterList);
 
 //const bool enableSound = false;
 bool showMenu = true;
+
+var morseCode = new MorseCode();
+//morseCode.Run(); //TOdo fix this
+Console.ReadLine();
 
 while (showMenu)
 {
@@ -158,3 +183,5 @@ static void DisplayResult(string message)
     Console.Write("\r\nPress Enter to return to Main Menu");
     Console.ReadLine();
 }
+
+await host.RunAsync();

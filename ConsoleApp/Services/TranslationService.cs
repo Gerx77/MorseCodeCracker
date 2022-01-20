@@ -10,7 +10,8 @@ namespace ConsoleApp.Services
     {
         public string TranslateMorse(string morse)
         {
-            throw new NotImplementedException();
+            return morse;
+            //throw new NotImplementedException();
         }
 
         public string TranslateWord(string morse)
